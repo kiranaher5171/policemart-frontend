@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 function getStrapiBaseUrl() {
-  const raw = process.env.STRAPI_URL || 'http://localhost:1337'
+  const raw = process.env.STRAPI_URL || 'http://localhost:10000'
   return raw.replace(/\/$/, '')
 }
 

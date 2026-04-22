@@ -15,7 +15,7 @@ export default async function BlogsPage() {
             <Typography color="text.secondary" sx={{ py: 4 }}>
               No blog posts yet. Start Strapi, publish entries in the Blogs collection, and set{' '}
               <code>STRAPI_URL</code> in <code>frontend/.env.local</code> (e.g.{' '}
-              <code>http://localhost:1337</code>).
+              <code>http://localhost:10000</code>).
             </Typography>
           ) : (
             <Grid container spacing={1}>

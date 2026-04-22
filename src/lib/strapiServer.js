@@ -16,10 +16,10 @@ function sortBlogsNewestFirst(rows) {
 
 /**
  * Strapi base URL for server-side fetches (Server Components, Route Handlers).
- * Set STRAPI_URL in frontend/.env.local (e.g. http://localhost:1337).
+ * Set STRAPI_URL in frontend/.env.local (e.g. http://localhost:10000).
  */
 export function getStrapiBaseUrl() {
-  const raw = process.env.STRAPI_URL || 'http://localhost:1337'
+  const raw = process.env.STRAPI_URL || 'http://localhost:10000'
   return raw.replace(/\/$/, '')
 }
 
