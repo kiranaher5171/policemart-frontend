@@ -1,0 +1,242 @@
+ /* ag grid table css started */
+ .ag-root-wrapper {
+   border-radius: 0px !important;
+   border: none !important;
+ }
+
+ .ag-cell-wrapper {
+   height: 100% !important;
+ }
+
+ .ag-header {
+   background-color: #004ea8 !important;
+   color: var(--white) !important;
+   font-family: var(--font-family) !important;
+ }
+
+ .ag-theme-alpine,
+ .ag-theme-balham,
+ .ag-theme-material,
+ .ag-theme-quartz {
+   font-family: var(--font-family) !important;
+ }
+
+ .ag-row {
+   font-family: var(--font-family) !important;
+ }
+
+ .ag-header-cell-text {
+   color: var(--white) !important;
+   font-size: 13px !important;
+   font-weight: 600 !important;
+   line-height: normal !important;
+ }
+
+ .ag-cell-focus:focus-within {
+   border-color: transparent !important;
+ }
+
+ .ag-row:hover {
+   background-color: transparent !important;
+ }
+
+ .ag-row::before {
+   background-color: transparent !important;
+ }
+
+ .ag-row-odd::before {
+   background-color: #ffffff !important;
+ }
+
+ .odd-row {
+   background-color: #ffffff;
+ }
+
+ .even-row {
+   background-color: #f9f9f9;
+ }
+
+
+ .ag-cell-value {
+   font-size: 12px !important;
+   font-weight: 500 !important;
+ }
+
+ .ag-pinned-left-header .ag-header-cell-resize {
+   right: -2px !important;
+ }
+
+ .green-btn {
+   background-color: #00ba411f !important;
+   color: var(--success) !important;
+   height: auto !important;
+   padding: 4px 12px !important;
+   font-size: 11px !important;
+   font-weight: 600 !important;
+   line-height: normal !important;
+   min-width: 100px !important;
+   border-radius: 6px !important;
+   display: inline-block !important;
+   text-align: center !important;
+ }
+
+ .yellow-btn {
+   color: #D0B404;
+   font-weight: 500 !important;
+   background-color: #fcf3cc !important;
+   padding: 4px 12px !important;
+   border-radius: 4px !important;
+ }
+
+ .red-btn {
+   background-color: #ff00001b !important;
+   color: var(--error) !important;
+   height: auto !important;
+   padding: 4px 12px !important;
+   font-size: 11px !important;
+   font-weight: 600 !important;
+   line-height: normal !important;
+   min-width: 100px !important;
+   border-radius: 6px !important;
+   display: inline-block !important;
+   text-align: center !important;
+ }
+
+ .orange-btn {
+   color: #ff6100 !important;
+   font-weight: 500 !important;
+   background-color: #fff0e6 !important;
+   padding: 4px 12px !important;
+   border-radius: 4px !important;
+ }
+
+ #Appbar .search .MuiInputBase-input.MuiOutlinedInput-input {
+   padding: 6px 6px !important;
+   font-size: 12px !important;
+   border-radius: 6px !important;
+   background-color: #ffffff !important;
+ }
+
+ #Appbar .search .MuiInputBase-root.MuiOutlinedInput-root {
+   background-color: #ffffff !important;
+ }
+
+ #Appbar .search .MuiOutlinedInput-notchedOutline {
+   border: none !important;
+   border-radius: 6px !important;
+ }
+
+ .table-search ::placeholder {
+   letter-spacing: 3px !important;
+   color: var(--dgray) !important;
+ }
+
+ .table-search .MuiOutlinedInput-input {
+   font-size: 12px !important;
+   line-height: normal !important;
+   color: var(--black) !important;
+   padding: 7px !important;
+   padding-left: 0px !important;
+ }
+
+ .table-search .MuiSvgIcon-root {
+   color: #bfbfbf !important;
+ }
+
+ .table-search .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+   border-color: var(--primary) !important;
+ }
+
+ /* White cards css started */
+ .table-card {
+   background-color: var(--white) !important;
+   border-radius: 6px !important;
+   box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 8px !important;
+   padding: 6px 0px !important;
+ }
+
+ .highlighted-column {
+   text-align: center !important;
+ }
+
+ .highlighted-column .ag-header-cell-label {
+   text-align: center !important;
+   justify-content: center !important;
+ }
+
+ .ag-header-cell-resize::after {
+   background-color: var(--white) !important;
+   position: absolute;
+   left: 4px !important;
+   width: 2px !important;
+ }
+
+ .table-textfield.textfield .MuiOutlinedInput-input {
+   padding: 6px 10px !important;
+   font-size: 12px !important;
+   font-weight: 400 !important;
+ }
+
+ .highlighted-column {
+   background-color: #e6f0fa !important;
+ }
+
+ .table-search ::placeholder {
+  letter-spacing: 5px !important;
+  font-weight: 400 !important;
+  font-size: 13px !important;
+  color: #858a8c !important;
+}
+
+.table-search .MuiOutlinedInput-input {
+  font-size: 12px !important;
+  line-height: normal !important;
+  color: var(--black) !important;
+  padding: 7px !important;
+  padding-left: 0px !important;
+
+}
+
+.table-search .MuiSvgIcon-root {
+  font-size: 22px !important;
+  color: #bfbfbf !important;
+}
+
+.table-search
+  .MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline { 
+  border: 1px solid var(--primary) !important;
+}
+
+.table-search .MuiInputBase-root.MuiOutlinedInput-root{
+  padding-left: 10px !important;
+}
+
+/* Table section title — soft gradient fill + rounded left + vertical brand gradient accent */
+.table-heading {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: normal !important;
+  color: var(--black) !important;
+  font-family: var(--font-family) !important;
+  padding:2px 10px 2px 14px !important;
+  border-radius: 6px 6px 6px 6px !important;
+  border: none !important; 
+  letter-spacing: 1.5px !important;
+} 
+
+.table-heading::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 4px !important;
+  border-radius: 10px 0 0 10px !important;
+  background: linear-gradient(80deg, #1930ab, #1930abbd 40%, #cc3366c7 70%, #c36) !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}

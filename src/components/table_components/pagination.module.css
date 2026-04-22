@@ -1,0 +1,69 @@
+/* Custom Pagination css */
+
+#tb_footer {
+  padding-top: 20px !important;
+  font-family: var(--font-family) !important;
+}
+
+#pagination nav {
+  text-align: end !important;
+  justify-content: flex-end !important;
+  display: flex !important;
+}
+
+.paginateBtn {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  min-width: 20px !important;
+  text-transform: capitalize !important;
+  color: var(--text) !important;
+  padding: 2px 5px !important;
+  border-radius: 2px !important;
+  margin: 0px 2px !important;
+}
+
+.selectedBtn {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  background-color: var(--primary) !important;
+  color: var(--white) !important;
+  min-width: 20px !important;
+  text-transform: capitalize !important;
+  padding: 2px 5px !important;
+  border-radius: 2px !important;
+  margin: 0px 2px !important;
+}
+
+#tableInfo h6 {
+  font-size: 10px !important;
+}
+
+.totalEntries {
+  color: #a6a6a6 !important;
+}
+
+.tbIcon {
+  font-size: 13px !important;
+}
+
+.tbIconBtnGrp {
+  display: flex !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+}
+
+@media (max-width: 600px) {
+  #pagination nav {
+    text-align: center !important;
+    justify-content: center !important;
+    display: flex !important;
+  }
+
+  #tableInfo {
+    justify-content: center !important;
+    text-align: center !important;
+    margin-bottom: 8px !important;
+  }
+}
+
+

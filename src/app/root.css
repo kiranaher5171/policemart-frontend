@@ -1,0 +1,330 @@
+@import url(globals.css);
+@import url(ag-grid-community/styles/ag-grid.css);
+@import url(ag-grid-community/styles/ag-theme-alpine.css); 
+@import url(../css/tables.css);
+
+:root {
+  /* Colors (fonts: see globals.css :root) */
+  --white: #ffffff;
+  --black: #000000;
+
+  --error: #f00;
+  --success: #00ba42;
+  --pending: #ffbe00;
+ 
+  --primary: #0d1233;
+  --secondary: #cc3366;
+
+  --gray: #7f7f7f;
+  --text: #4d4f5d ;
+}
+
+.lora {
+  font-family: var(--font-lora-stack) !important;
+}
+
+.black {
+  color: var(--black) !important;
+}
+
+.white {
+  color: var(--white) !important;
+}
+
+.green {
+  color: var(--success) !important;
+}
+
+.red {
+  color: var(--error) !important;
+}
+
+.yellow {
+  color: var(--pending) !important;
+}
+
+.text {
+  color: var(--text) !important;
+}
+
+.primary {
+  color: var(--primary) !important;
+}
+
+.secondary {
+  color: var(--secondary) !important;
+}
+
+.gray {
+  color: var(--gray) !important;
+}
+
+.text {
+  color: var(--text) !important;
+}
+
+.gradient-bg {
+  background: rgb(25, 48, 171) !important;
+  background: -moz-linear-gradient(
+    34deg,
+    rgba(25, 48, 171, 1) 0%,
+    rgba(204, 51, 102, 1) 100%
+  ) !important;
+  background: -webkit-linear-gradient(
+    34deg,
+    rgba(25, 48, 171, 1) 0%,
+    rgba(204, 51, 102, 1) 100%
+  ) !important;
+  background: linear-gradient(
+    34deg,
+    rgba(25, 48, 171, 1) 0%,
+    rgba(204, 51, 102, 1) 100%
+  ) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1930ab",endColorstr="#cc3366",GradientType=1) !important;
+}
+
+.gradient-color {
+  background: linear-gradient(
+    34deg,
+    rgba(25, 48, 171, 1) 40%,
+    rgba(204, 51, 102, 1) 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important; /* Standard background clipping */
+  text-fill-color: transparent !important; /* Standard text fill */
+}
+
+a{
+  color: #1930ab !important;
+  text-decoration: underline !important;
+}
+
+.center {
+  text-align: center !important;
+}
+
+.right {
+  text-align: right !important;
+}
+
+.left {
+  text-align: left !important;
+}
+
+.justify {
+  text-align: justify !important;
+}
+
+.fx_fs {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+}
+
+.fx_fe {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+}
+
+.fx_sb {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.fx_se {
+  display: flex !important;
+  justify-content: space-evenly !important;
+  align-items: center !important;
+}
+
+.fx_c {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.grid_c {
+  display: grid !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+
+
+.section {
+  padding-top: 60px !important;
+  padding-bottom: 60px !important;
+}
+
+.fw3 {
+  font-weight: 300 !important;
+}
+
+.fw4 {
+  font-weight: 400 !important;
+}
+
+.fw5 {
+  font-weight: 500 !important;
+}
+
+.fw6 {
+  font-weight: 600 !important;
+}
+
+.fw7 {
+  font-weight: 700 !important;
+}
+
+
+h1 {
+  font-size: 44px !important;
+  line-height: 62px !important;
+}
+
+h2 {
+  font-size: 32px !important;
+  line-height: 48px !important;
+}
+
+h3 {
+  font-size: 28px !important;
+  line-height: 40px !important;
+}
+
+h4 {
+  font-size: 22px !important;
+  line-height: 32px !important;
+}
+
+h5 {
+  font-size: 16px !important;
+  line-height: 24px !important;
+}
+
+h6 {
+  font-size: 13px !important;
+  line-height: 20px !important;
+}
+
+.paragraph {
+  font-size: 13px !important;
+  line-height: 20px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.04em !important;
+  color: var(--text) !important;
+}
+
+/* Strapi / MUI: bold and other inline marks must match body copy, not theme “primary” black */
+.paragraph strong {
+  color: black !important;
+  font-weight: 600 !important;
+}
+
+.heading{
+  font-size: 32px !important;
+  line-height: 48px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+}
+
+.gap1 {
+  gap: 8px !important;
+}
+
+.gap2 {
+  gap: 16px !important;
+} 
+
+.whitebx {
+  background-color: var(--white) !important;
+  padding: 12px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+main {
+  background-color: #fbfefd !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  width: 100% !important;
+  overflow: auto !important;
+}
+
+.page-content {
+  height: calc(100vh - 30px) !important;
+  overflow: auto !important; 
+  padding: 12px 12px 12px  12px !important;
+}
+ 
+
+.w100 {
+  width: 100% !important;
+} 
+
+.txt-shadow {
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1) !important;
+}
+
+.footer {
+  background-color: #e3e3e3;
+  position: absolute;
+  width: 100% !important;
+  bottom: 0px !important;
+  padding: 4px 12px !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
+  color: var(--black) !important;
+  font-family: var(--font-family) !important; 
+  border-top: 1px solid #e3e3e3 !important;
+  border-bottom: 1px solid #e3e3e3 !important;
+  border-left: 1px solid #e3e3e3 !important;
+  border-right: 1px solid #e3e3e3 !important;
+  border-radius: 0px 0px 0px 0px !important;
+}
+
+.relative {
+  position: relative !important;
+}
+
+.absolute {
+  position: absolute !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 550px) {
+  .child-content {
+    padding-bottom: 60px !important;
+  }
+  .mob_block{
+    display: block !important;
+  }
+  .mob_block .fx_fs{
+    padding-top: 8px !important;
+  }
+}
+
+
+/* Media Queries */
+#mobile-only {
+  display: none !important;
+}
+
+@media (max-width: 850px) {
+  #desktop-only {
+    display: none !important;
+  }
+  #mobile-only {
+    display: inherit !important;
+  }
+}
+
+ 

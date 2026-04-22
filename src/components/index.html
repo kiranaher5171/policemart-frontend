@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiran Aher - AI Learning Tracker 2026</title>
+    <style>
+        :root { --main: #1e293b; --accent: #3b82f6; --success: #22c55e; }
+        body { font-family: 'Inter', sans-serif; background: #f1f5f9; padding: 20px; color: var(--main); }
+        .tracker-card { max-width: 900px; margin: auto; background: white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); overflow: hidden; }
+        .header { background: var(--main); color: white; padding: 30px; text-align: center; }
+        .phase-section { padding: 25px; border-bottom: 1px solid #e2e8f0; }
+        .phase-title { display: flex; align-items: center; gap: 10px; color: var(--accent); margin-bottom: 15px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .item { display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 0.95em; }
+        input[type="checkbox"] { transform: scale(1.2); cursor: pointer; }
+        .milestone { margin-top: 15px; background: #fff7ed; border: 1px dashed #f97316; padding: 15px; border-radius: 8px; }
+        .milestone strong { color: #c2410c; }
+        .progress-bar { height: 10px; background: #e2e8f0; border-radius: 5px; margin-top: 10px; }
+        .progress-fill { height: 100%; width: 0%; background: var(--success); border-radius: 5px; transition: 0.3s; }
+    </style>
+</head>
+<body>
+
+<div class="tracker-card">
+    <div class="header">
+        <h1>Full-Stack AI Syllabus 2026</h1>
+        <p>Career Roadmap: Frontend → AI Engineer</p>
+    </div>
+
+    <div class="phase-section">
+        <div class="phase-title"><h2>Phase 1: Advanced Python Core</h2> <span>(40 Hours)</span></div>
+        <div class="grid">
+            <div class="item"><input type="checkbox"> Functional Programming (Lambdas, Map/Filter)</div>
+            <div class="item"><input type="checkbox"> Decorators & Generators</div>
+            <div class="item"><input type="checkbox"> OOP: Inheritance & Encapsulation</div>
+            <div class="item"><input type="checkbox"> Handling JSON/APIs & AsyncIO</div>
+        </div>
+        <div class="milestone">
+            <strong>Senior Review Milestone:</strong> Build a backend script that automates a data-pull from a public API.
+        </div>
+    </div>
+
+    <div class="phase-section">
+        <div class="phase-title"><h2>Phase 2: Data Engineering Engine</h2> <span>(60 Hours)</span></div>
+        <div class="grid">
+            <div class="item"><input type="checkbox"> NumPy: Vectorized Computing</div>
+            <div class="item"><input type="checkbox"> Pandas: Data Aggregation & Pivot Tables</div>
+            <div class="item"><input type="checkbox"> SQL for Python: Join, Subqueries, & Window functions</div>
+            <div class="item"><input type="checkbox"> EDA: Statistical Cleaning of Datasets</div>
+        </div>
+        <div class="milestone">
+            <strong>Senior Review Milestone:</strong> Create a Python dashboard using <em>Streamlit</em> that visualizes 10,000+ rows.
+        </div>
+    </div>
+
+    <div class="phase-section">
+        <div class="phase-title"><h2>Phase 3: Machine Learning & Modeling</h2> <span>(80 Hours)</span></div>
+        <div class="grid">
+            <div class="item"><input type="checkbox"> Linear & Logistic Regression (Scikit-learn)</div>
+            <div class="item"><input type="checkbox"> Decision Trees & Random Forests</div>
+            <div class="item"><input type="checkbox"> Feature Engineering & Overfitting Tuning</div>
+            <div class="item"><input type="checkbox"> Model Deployment via FastAPI</div>
+        </div>
+        <div class="milestone">
+            <strong>Senior Review Milestone:</strong> Deploy a local ML model that predicts a "Success" metric for a company dataset.
+        </div>
+    </div>
+
+    <div class="phase-section">
+        <div class="phase-title"><h2>Phase 4: Generative AI & Agents</h2> <span>(Open-ended)</span></div>
+        <div class="grid">
+            <div class="item"><input type="checkbox"> OpenAI/Gemini API Integration</div>
+            <div class="item"><input type="checkbox"> LangChain / CrewAI Orchestration</div>
+            <div class="item"><input type="checkbox"> Vector DBs (ChromaDB / Pinecone)</div>
+            <div class="item"><input type="checkbox"> RAG (Retrieval Augmented Generation)</div>
+        </div>
+        <div class="milestone">
+            <strong>Senior Review Milestone:</strong> Build a "Company Knowledge Bot" using RAG to answer internal document questions.
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

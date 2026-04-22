@@ -1,0 +1,108 @@
+/* Font tokens: Poppins + Lora come from next/font on <html> (--font-poppins, --font-lora) */
+:root {
+  --font-family: var(--font-poppins), "Poppins", sans-serif;
+  --font-lora-stack: var(--font-lora), "Lora", serif;
+}
+
+/* box-sizing only — do not zero padding/margin on * (breaks AG Grid and other UI libs) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100vw;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative !important;
+  background-color: #f0f0f0 !important;
+  font-family: var(--font-family) !important;
+}
+
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  display: flex !important;
+  align-items: flex-end !important;
+  /* Same 80deg flow as before, smoothed to black so the photo reads through cleanly */
+  background: linear-gradient(#000000a3 10% 20%, #0000004a 50% 80%, #000000a8 100%)
+}
+
+.card-container { 
+  border-radius: 6px !important;
+  overflow: hidden !important;
+}
+
+.card-container .content {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  /* Tag + title stay at top; button uses margin-top: auto to sit at bottom */
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  border-radius: 0 !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+}
+
+.card-tag{
+  font-size: 10px !important;
+  font-weight: 500 !important;  
+  border-radius: 5px !important; 
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+}
+
+.card-title{
+  font-size: 17px !important;
+  line-height: 24px !important;
+  font-weight: 600 !important;
+  color: #fff !important; 
+  letter-spacing: 0.05em !important;
+  text-transform: capitalize !important;
+}
+
+.card-button {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: var(--primary) !important;
+  background-color: #ffffff !important;
+  padding: 4px 12px !important;
+  border-radius: 4px !important;
+  text-transform: capitalize !important;
+  letter-spacing: 0.5px !important;
+  align-self: flex-start !important;
+  margin-top: auto !important;
+  text-decoration: none !important;
+}
+
+ol ::marker{
+  color: var(--secondary) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+} 
+
+ul ::marker{
+  color: var(--secondary) !important;
+  font-size: 16px !important;
+}
+
+ul,
+ol {
+  padding-left: 14px !important;
+}
+
+ol {
+  list-style-type: decimal !important;
+  list-style-position: outside !important;
+}
