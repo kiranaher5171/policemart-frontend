@@ -13,6 +13,14 @@ export function normalizeStrapiMediaList(imageField) {
     const d = /** @type {{ data?: unknown }} */ (imageField).data
     if (Array.isArray(d)) return d.filter((x) => x && typeof x === 'object')
     if (d && typeof d === 'object') return [/** @type {Record<string, unknown>} */ (d)]
+    return []
+  }
+  // Single populated media (Strapi v5) — not wrapped in `data` or an array
+  if (typeof imageField === 'object' && imageField !== null) {
+    const o = /** @type {Record<string, unknown>} */ (imageField)
+    if (typeof o.url === 'string' || (o.formats && typeof o.formats === 'object')) {
+      return [o]
+    }
   }
   return []
 }

@@ -22,8 +22,10 @@ const DEFAULT_COVER = '/images/sampalimage.jpg'
  * }} props
  */
 const BlogCard = ({ blog, coverSrc, priority = false }) => {
-  const category = blog?.category ?? 'Blog'
-  const title = blog?.title ?? 'Untitled'
+  const categoryRaw = blog?.category ?? 'Blog'
+  const category = typeof categoryRaw === 'string' ? categoryRaw.trim() || 'Blog' : 'Blog'
+  const titleRaw = blog?.title ?? 'Untitled'
+  const title = typeof titleRaw === 'string' ? titleRaw.trim() || 'Untitled' : 'Untitled'
   const slug = blog?.slug
   const href = slug ? `/blogs/${slug}` : '/blogs'
   const imageSrc = coverSrc || DEFAULT_COVER

@@ -1,6 +1,35 @@
 import { normalizeStrapiMediaList, pickStrapiMediaPath } from '@/lib/strapiMedia'
 
 /**
+ * Flatten Strapi v4 REST rows (`{ id, attributes }`) or pass through v5 flat documents.
+ * @param {Record<string, unknown> | null | undefined} row
+ * @returns {Record<string, unknown> | null}
+ */
+export function normalizeStrapiDocument(row) {
+  if (!row || typeof row !== 'object') return null
+  if ('attributes' in row && row.attributes && typeof row.attributes === 'object') {
+    const attrs = /** @type {Record<string, unknown>} */ (row.attributes)
+    return {
+      ...attrs,
+      ...(row.id != null ? { id: row.id } : {}),
+      ...(row.documentId != null ? { documentId: row.documentId } : {}),
+    }
+  }
+  return /** @type {Record<string, unknown>} */ (row)
+}
+
+/**
+ * Strapi list/detail `data` may be an array or a single object.
+ * @param {unknown} data
+ * @returns {Array<Record<string, unknown>>}
+ */
+function strapiDataToRows(data) {
+  if (Array.isArray(data)) return /** @type {Array<Record<string, unknown>>} */ (data.filter(Boolean))
+  if (data && typeof data === 'object') return [/** @type {Record<string, unknown>} */ (data)]
+  return []
+}
+
+/**
  * Newest first by publishedAt, then updatedAt, then createdAt.
  * @param {Array<Record<string, unknown>>} rows
  * @returns {Array<Record<string, unknown>>}
@@ -15,12 +44,33 @@ function sortBlogsNewestFirst(rows) {
 }
 
 /**
- * Strapi base URL for server-side fetches (Server Components, Route Handlers).
- * Set STRAPI_URL in frontend/.env.local (e.g. http://localhost:10000).
+ * Pick Strapi origin from env. Supports two backends via STRAPI_USE:
+ * - STRAPI_USE=local  → STRAPI_URL_LOCAL, else STRAPI_URL, else http://localhost:10000
+ * - STRAPI_USE=remote → STRAPI_URL_REMOTE, else STRAPI_URL
+ * If STRAPI_USE is unset, STRAPI_URL is used (backward compatible).
+ *
+ * Use the site origin only (no /api): e.g. https://policemart-backend.onrender.com
+ * A trailing `/api` is stripped so fetches stay `${base}/api/...` and never `/api/api/...`.
  */
 export function getStrapiBaseUrl() {
-  const raw = process.env.STRAPI_URL || 'http://localhost:10000'
-  return raw.replace(/\/$/, '')
+  const use = String(process.env.STRAPI_USE || '')
+    .trim()
+    .toLowerCase()
+
+  let raw = ''
+  if (use === 'local') {
+    raw = process.env.STRAPI_URL_LOCAL || process.env.STRAPI_URL || ''
+  } else if (use === 'remote' || use === 'production' || use === 'render') {
+    raw = process.env.STRAPI_URL_REMOTE || process.env.STRAPI_URL || ''
+  } else {
+    raw = process.env.STRAPI_URL || ''
+  }
+
+  if (!raw) raw = 'http://localhost:10000'
+
+  let base = raw.replace(/\/$/, '')
+  base = base.replace(/\/api\/?$/i, '')
+  return base
 }
 
 /**
@@ -61,8 +111,10 @@ export async function fetchStrapiBlogs() {
     })
     if (!res.ok) return []
     const json = await res.json()
-    const rows = json?.data
-    return sortBlogsNewestFirst(Array.isArray(rows) ? rows : [])
+    const rows = strapiDataToRows(json?.data)
+      .map((r) => normalizeStrapiDocument(r))
+      .filter((r) => r && typeof r === 'object')
+    return sortBlogsNewestFirst(rows)
   } catch {
     return []
   }
@@ -111,8 +163,10 @@ export async function fetchStrapiLatestBlogs(opts = {}) {
       const res = await fetch(url, { headers, next: { revalidate: 60 } })
       if (!res.ok) return []
       const json = await res.json()
-      const rows = json?.data
-      return sortBlogsNewestFirst(Array.isArray(rows) ? rows : [])
+      const rows = strapiDataToRows(json?.data)
+        .map((r) => normalizeStrapiDocument(r))
+        .filter((r) => r && typeof r === 'object')
+      return sortBlogsNewestFirst(rows)
     } catch {
       return []
     }
@@ -165,9 +219,9 @@ export async function fetchStrapiBlogBySlug(slug) {
     const res = await fetch(url, { headers, next: { revalidate: 60 } })
     if (!res.ok) return null
     const json = await res.json()
-    const rows = json?.data
-    if (!Array.isArray(rows) || rows.length === 0) return null
-    return rows[0]
+    const rows = strapiDataToRows(json?.data)
+    const first = rows[0]
+    return first ? normalizeStrapiDocument(first) : null
   } catch {
     return null
   }

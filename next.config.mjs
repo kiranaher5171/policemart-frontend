@@ -17,6 +17,11 @@ const nextConfig = {
         port: '10000',
         pathname: '/uploads/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'policemart-backend.onrender.com',
+        pathname: '/uploads/**',
+      },
     ],
   },
 };

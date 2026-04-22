@@ -12,10 +12,11 @@ export default async function BlogsPage() {
       <Box sx={{ pt: '70px' }}>
         <Container maxWidth="lg">
           {blogs.length === 0 ? (
-            <Typography color="text.secondary" sx={{ py: 4 }}>
-              No blog posts yet. Start Strapi, publish entries in the Blogs collection, and set{' '}
-              <code>STRAPI_URL</code> in <code>frontend/.env.local</code> (e.g.{' '}
-              <code>http://localhost:10000</code>).
+            <Typography color="text.secondary" sx={{ py: 4, maxWidth: 560 }}>
+              No blog posts were loaded. If you already have published entries in Strapi, the app may not be able to
+              reach the server from this environment, or the Blogs type may not allow public read. Ask your developer
+              to verify the backend connection and permissions. A sample environment file is included in the repository as
+              env.example.txt.
             </Typography>
           ) : (
             <Grid container spacing={1}>
