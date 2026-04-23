@@ -93,6 +93,7 @@ function normalizeContactRow(entry) {
 export async function GET() {
   const base = getStrapiBaseUrl()
   const params = new URLSearchParams()
+  params.set('populate', '*')
   params.set('sort', 'createdAt:desc')
   params.set('pagination[pageSize]', '100')
   const url = `${base}/api/contact-messages?${params.toString()}`

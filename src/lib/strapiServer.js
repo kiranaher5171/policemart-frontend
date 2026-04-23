@@ -48,6 +48,7 @@ function sortBlogsNewestFirst(rows) {
  * - STRAPI_USE=local  → STRAPI_URL_LOCAL, else STRAPI_URL, else http://localhost:10000
  * - STRAPI_USE=remote → STRAPI_URL_REMOTE, else STRAPI_URL
  * If STRAPI_USE is unset, STRAPI_URL is used (backward compatible).
+ * Optional: NEXT_PUBLIC_STRAPI_URL (same origin, no /api) if you only set public env on Vercel.
  *
  * Use the site origin only (no /api): e.g. https://policemart-backend.onrender.com
  * A trailing `/api` is stripped so fetches stay `${base}/api/...` and never `/api/api/...`.
@@ -57,16 +58,29 @@ export function getStrapiBaseUrl() {
     .trim()
     .toLowerCase()
 
+  const publicFallback = process.env.NEXT_PUBLIC_STRAPI_URL || ''
+
   let raw = ''
   if (use === 'local') {
-    raw = process.env.STRAPI_URL_LOCAL || process.env.STRAPI_URL || ''
+    raw = process.env.STRAPI_URL_LOCAL || process.env.STRAPI_URL || publicFallback
   } else if (use === 'remote' || use === 'production' || use === 'render') {
-    raw = process.env.STRAPI_URL_REMOTE || process.env.STRAPI_URL || ''
+    raw = process.env.STRAPI_URL_REMOTE || process.env.STRAPI_URL || publicFallback
   } else {
-    raw = process.env.STRAPI_URL || ''
+    raw = process.env.STRAPI_URL || publicFallback
   }
 
-  if (!raw) raw = 'http://localhost:10000'
+  if (!raw) {
+    const isProd =
+      process.env.NODE_ENV === 'production' ||
+      process.env.VERCEL === '1' ||
+      process.env.VERCEL_ENV === 'production'
+    if (isProd) {
+      throw new Error(
+        'Missing Strapi URL: set STRAPI_URL or NEXT_PUBLIC_STRAPI_URL (and optionally STRAPI_URL_REMOTE) on Vercel.',
+      )
+    }
+    raw = 'http://localhost:10000'
+  }
 
   let base = raw.replace(/\/$/, '')
   base = base.replace(/\/api\/?$/i, '')
