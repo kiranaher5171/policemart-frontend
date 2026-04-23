@@ -43,11 +43,18 @@ export function pickStrapiMediaPath(media) {
   if (!m || typeof m !== 'object') return undefined
   const formats = m.formats
   if (formats && typeof formats === 'object') {
-    const order = ['large', 'medium', 'small', 'thumbnail']
+    const order = ['large', 'medium', 'small']
     for (const key of order) {
       const f = formats[key]
       if (f && typeof f === 'object' && typeof f.url === 'string') return f.url
     }
   }
-  return typeof m.url === 'string' ? m.url : undefined
+  // Prefer master file before thumbnail: derivatives are often missing on ephemeral disks (e.g. Render)
+  // while the original URL still exists or points to durable storage.
+  if (typeof m.url === 'string' && m.url) return m.url
+  if (formats && typeof formats === 'object') {
+    const thumb = formats.thumbnail
+    if (thumb && typeof thumb === 'object' && typeof thumb.url === 'string') return thumb.url
+  }
+  return undefined
 }
